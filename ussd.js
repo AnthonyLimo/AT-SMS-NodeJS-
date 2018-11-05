@@ -9,7 +9,7 @@ const credentials = {
 const AfricasTalking = require('africastalking')(credentials);
 const airtime = AfricasTalking.AIRTIME;
 
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
 
 	const { sessionId, serviceCode, phoneNumber, text } = req.body;
 
