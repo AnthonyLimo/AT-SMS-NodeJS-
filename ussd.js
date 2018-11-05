@@ -4,20 +4,31 @@ const app = express();
 const credentials = {
 	apiKey: '',
 	username: ''
-};
+}
 
 const AfricasTalking = require('africastalking')(credentials);
+const airtime = AfricasTalking.AIRTIME;
 
 app.get("/", (req, res) => {
 
 	const { sessionId, serviceCode, phoneNumber, text } = req.body;
+
+	const recipient1 = {
+		to: phoneNumber,
+		amount: "KES 50"
+	};
+
+	const options = {
+		recipient: recipient1
+	};
 
 	let response = '';
 
 	if (text == "") {
 		response =  `CON What would you like to check?
 		1. My Account 
-		2. My phone number`;
+		2. My phone number
+		3. Send airtime`;
 	} else if (text == "1") {
 		response = `CON Choose the information that you would like to view
 		1. Account number
@@ -30,8 +41,14 @@ app.get("/", (req, res) => {
 	} else if (text == "1*2") {
 		const accountBalance = 1222;
 		response = `END Your account balance for account number ${accountNumber} is KES ${accountBalance}`;
-	} else {
-		response = `END Invalid choice`;
+	} else if (text == "3") {
+		airtime.send(options)
+			.then(resp => {
+				console.log(resp);
+			})
+			.catch(error => {
+				console.log(error)
+			});
 	}
 
 });
