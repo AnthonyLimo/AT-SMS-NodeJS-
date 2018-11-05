@@ -4,8 +4,8 @@
 //Let's begin
 
 const options = {
-	apiKey: '5f5194fad3d6677596a17e7345b07976eff561caf0b0bd88a021959edce67232',
-	username: 'njugunamadeit'
+	apiKey: 'ENTER_YOUR_API_KEY_HERE',
+	username: 'ENTER_YOUR_USERNAME_KEY_HERE'
 };
 
 const AfricasTalking = require('africastalking')(options);
