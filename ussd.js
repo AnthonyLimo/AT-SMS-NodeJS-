@@ -23,10 +23,12 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
 
-	const sessionId = req.body.sessionId;
-	const serviceCode = req.body.serviceCode;
-	const phoneNumber = req.body.phoneNumber;
-	const text = req.body.text;
+	//const sessionId = req.body.sessionId;
+	//const serviceCode = req.body.serviceCode;
+	//const phoneNumber = req.body.phoneNumber;
+	//const text = req.body.text;
+
+	console.log(req);
 
 	//USSD logic
 
@@ -73,7 +75,7 @@ app.post("/", (req, res) => {
 
 
 	} else if (text == "4") {
-		
+
 
 		const smsOptions = {
 			to: ['+254727545805'],
